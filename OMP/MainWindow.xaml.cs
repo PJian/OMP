@@ -49,7 +49,7 @@ namespace OMP
         private Soft createSoft()
         {
             ORM = new Soft();
-            ORM.SoftName = "ORM";
+            ORM.SoftName = "OMP";
             ORM.SoftVersion = "Beta1.0";
             ORM.TryDays = 3;
             ORM.KeySalt = 10;
@@ -73,13 +73,13 @@ namespace OMP
             regTimer = new DispatcherTimer();
 
             regTimer.Interval = TimeSpan.FromMinutes(5);
-
+          //  regTimer.Interval = TimeSpan.FromSeconds(5);
             regTimer.Tick += timer_Tick;
             regTimer.IsEnabled = true;
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            var trialDays = CodeUtil.getTrailDays();
+            var trialDays = CodeUtil.getTrailDays()-27;
             if (trialDays < 0)
             {
                 expired();
