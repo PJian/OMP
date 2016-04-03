@@ -3,16 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OMP.reg
 {
@@ -21,15 +12,14 @@ namespace OMP.reg
     /// </summary>
     public partial class WinForReg : Window
     {
-        public Soft RegSoft { get; set; }//需要进行注册的软件实体
+        public Soft RegSoft { get; set; }
         public WinForReg()
         {
             InitializeComponent();
         }
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            //显示本机机器码
-            this.CMPID.Text = HardWareInfo.getMachineCode();
+            CMPID.Text = HardWareInfo.getMachineCode();
         }
 
         /// <summary>
@@ -39,8 +29,8 @@ namespace OMP.reg
         /// <param name="e"></param>
         private void registerBtn_Click(object sender, RoutedEventArgs e)
         {
-            string code = this.serialNumTxt.Text;
-            if ("".Equals(code))
+            var code = this.serialNumTxt.Text;
+            if (string.Empty.Equals(code))
             {
                 MessageBox.Show("请填写验证码");
             }
@@ -49,7 +39,6 @@ namespace OMP.reg
                 RegisterTableMsg.registSoft = RegSoft;
                 CodeUtil.regist(code, success, failed);
             }
-
         }
 
         public void success()
@@ -63,12 +52,12 @@ namespace OMP.reg
 
         private void Window_Closed_1(object sender, EventArgs e)
         {
-            Process.GetCurrentProcess().Kill();//试用期结束，结束程序
+            Process.GetCurrentProcess().Kill();
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            Process.GetCurrentProcess().Kill();//试用期结束，结束程序
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

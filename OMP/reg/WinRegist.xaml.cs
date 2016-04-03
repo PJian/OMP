@@ -3,16 +3,7 @@ using SerialNum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OMP.reg
 {
@@ -28,14 +19,14 @@ namespace OMP.reg
         }
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            this.reg.RegSoft = soft;
+            reg.RegSoft = soft;
         }
 
         private void reg_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (this.reg.Visibility == System.Windows.Visibility.Collapsed)
+            if (reg.Visibility == System.Windows.Visibility.Collapsed)
             {
-                this.Close();
+                Close();
             }
         }
 
