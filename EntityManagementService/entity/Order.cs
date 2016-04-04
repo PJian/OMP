@@ -43,7 +43,7 @@ namespace EntityManagementService.entity
         public string addr { get; set; }
         public string shop { get; set; }
         public string totalpreprice { get; set; }
-        public string freight { get; set; }
+        public double freight { get; set; }
         public string delivery_way { get; set; }
         public string time { get; set; }
 

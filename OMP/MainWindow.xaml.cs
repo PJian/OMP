@@ -48,11 +48,7 @@ namespace OMP
         }
         private Soft createSoft()
         {
-            ORM = new Soft();
-            ORM.SoftName = "OMP";
-            ORM.SoftVersion = "Beta1.0";
-            ORM.TryDays = 3;
-            ORM.KeySalt = 10;
+            ORM = new Soft() { SoftName = "OoderManagePrintPJ", SoftVersion = "Beta1.0", TryDays = 30, KeySalt = 10 };
             return ORM;
         }
 
@@ -73,13 +69,13 @@ namespace OMP
             regTimer = new DispatcherTimer();
 
             regTimer.Interval = TimeSpan.FromMinutes(5);
-          //  regTimer.Interval = TimeSpan.FromSeconds(5);
+            //  regTimer.Interval = TimeSpan.FromSeconds(5);
             regTimer.Tick += timer_Tick;
             regTimer.IsEnabled = true;
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            var trialDays = CodeUtil.getTrailDays()-27;
+            var trialDays = CodeUtil.getTrailDays();
             if (trialDays < 0)
             {
                 expired();
@@ -237,7 +233,7 @@ namespace OMP
                 allSelectedOrder = new List<Order>();
                 if (dataGrid_orderStateTab.SelectedItem != null)
                 {
-                    allSelectedOrder.Add( dataGrid_orderStateTab.SelectedItem as Order);
+                    allSelectedOrder.Add(dataGrid_orderStateTab.SelectedItem as Order);
                 }
             }
 
@@ -247,7 +243,7 @@ namespace OMP
                     {
                         label_msg.Content = "状态修改成功";
 
-                        OrderUtil.getPayOrder(showOrdersInTabStatus);
+                       // OrderUtil.getPayOrder(showOrdersInTabStatus);
                     });
             }
         }
@@ -317,7 +313,7 @@ namespace OMP
         /// <returns></returns>
         private List<Order> getLabelOrder(Order order)
         {
-            var orders = new List<Order>();
+            List<Order> orders = new List<Order>();
             orders.Add(new Order()
             {
                 uid = order.uid,
@@ -331,7 +327,7 @@ namespace OMP
                 time = order.time,
                 freight = order.freight,
                 totalpreprice = order.totalpreprice,
-                TotalPrice = double.Parse(order.totalpreprice) + double.Parse(order.freight)
+                TotalPrice = double.Parse(order.totalpreprice) + order.freight
             });
 
             return orders;
@@ -388,10 +384,12 @@ namespace OMP
                 return null;
             }
             List<Order> selectedOrder = getAllSelectedOrder();
-            if(selectedOrder==null){
+            if (selectedOrder == null)
+            {
                 selectedOrder = new List<Order>();
             }
-            if(selectedOrder.Count<=0){
+            if (selectedOrder.Count <= 0)
+            {
                 selectedOrder.Add(this.currentOrder);
             }
 
@@ -399,8 +397,8 @@ namespace OMP
             {
                 if (pageOptions.PrintType == PrintType.ORDER)
                 {
-                    var report = new OrderTemplate(pageOptions);
-                    var orders = new List<Order>();
+                    OrderTemplate report = new OrderTemplate(pageOptions);
+                    List<Order> orders = new List<Order>();
                     orders.Add(order);
                     report.DataSource = orders;
                     xtraReports.Add(report);
@@ -427,17 +425,6 @@ namespace OMP
             foreach (XtraReport item in xtraReports)
             {
                 var pt = new ReportPrintTool(item);
-
-
-
-
-
-
-
-
-
-
-
                 pt.ShowPreviewDialog();
             }
         }
@@ -459,12 +446,10 @@ namespace OMP
             }
             foreach (XtraReport item in xtraReports)
             {
-                var pt = new ReportPrintTool(item);
-
-                for (var i = 0; i < pageOptions.PageNum; i++)
-                {
-                    pt.Print(pageOptions.Printer);
-                }
+                ReportPrintTool pt = new ReportPrintTool(item);
+                pt.PrinterSettings.Copies = pageOptions.PageNum;
+                pt.Print(pageOptions.Printer);
+                
             }
         }
 

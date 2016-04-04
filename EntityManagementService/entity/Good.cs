@@ -19,10 +19,10 @@ namespace EntityManagementService.entity
     {
         public string gcode { get; set; }
         public string gname { get; set; }
-        public string gunitprice { get; set; }
+        public double gunitprice { get; set; }
         public string gunit { get; set; }
-        public string gpreweight { get; set; }
+        public double gpreweight { get; set; }
 
-        public string gpreprice { get; set; } 
+        public double gpreprice { get; set; } 
     }
 }
