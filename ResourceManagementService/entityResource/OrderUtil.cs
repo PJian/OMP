@@ -35,7 +35,23 @@ namespace ResourceManagementService.entityResource
         /// </summary>
         private static string API_5 = "admin/api/index.php/order/updatestatus/3?uid=2988&ucode=88616770341";
 
+        /// <summary>
+        /// 获取发送短信失败的叮当
+        /// </summary>
+        private static string API_6 = "admin/api/index.php/order/getSMSfailedLists?uid=2988&ucode=88616770341";
+
         private static string BASE_ADDRESS = "http://www.wuyoutao.net/";
+
+        /// <summary>
+        /// 获取短信发送失败的订单
+        /// </summary>
+        /// <param name="callBack"></param>
+        public static void getTextFailedOrder(Action<List<Order>> callBack)
+        {
+            getOrder(API_6, callBack);
+        }
+
+
         /// <summary>
         /// 异步获取已付款订单
         /// </summary>

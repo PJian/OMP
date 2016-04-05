@@ -181,6 +181,8 @@
 
                     <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="4">
                         <Button Content="获取已付款订单" x:Name="btn_getPricedOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedOrderStateTab_Click"></Button>
+                        <Button Content="获取未发送短信订单" x:Name="btn_getTextFiledOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getTextFiledOrderStateTab_Click"></Button>
+
                         <Label x:Name="label_msg" HorizontalAlignment="Right"></Label>
                     </StackPanel>
                 </Grid>

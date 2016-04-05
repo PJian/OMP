@@ -40,6 +40,7 @@
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
@@ -71,7 +72,7 @@
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
-            this.合计 = new DevExpress.XtraReports.UI.FormattingRule();
+            this.pickup = new DevExpress.XtraReports.UI.FormattingRule();
             this.smartPasteExtension1 = new DevExpress.CodeRush.Extensions.SmartPasteExtension(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartPasteExtension1)).BeginInit();
@@ -199,6 +200,7 @@
             // reportHeaderBand1
             // 
             this.reportHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel11,
             this.xrLabel9,
             this.xrLabel10,
             this.xrLabel8,
@@ -218,6 +220,23 @@
             this.reportHeaderBand1.StylePriority.UseForeColor = false;
             this.reportHeaderBand1.StylePriority.UseTextAlignment = false;
             this.reportHeaderBand1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // xrLabel11
+            // 
+            this.xrLabel11.Angle = 0.4F;
+            this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "delivery_way")});
+            this.xrLabel11.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold);
+            this.xrLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(182.6913F, 10.58331F);
+            this.xrLabel11.Name = "xrLabel11";
+            this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel11.SizeF = new System.Drawing.SizeF(91.97433F, 25.70834F);
+            this.xrLabel11.StyleName = "Title";
+            this.xrLabel11.StylePriority.UseFont = false;
+            this.xrLabel11.StylePriority.UseForeColor = false;
+            this.xrLabel11.StylePriority.UseTextAlignment = false;
+            this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel9
             // 
@@ -655,9 +674,10 @@
             this.xrLabel26.Text = "派送费：";
             this.xrLabel26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // 合计
+            // pickup
             // 
-            this.合计.Name = "合计";
+            this.pickup.Condition = "Contains([delivery_way], \'pickup\')";
+            this.pickup.Name = "pickup";
             // 
             // smartPasteExtension1
             // 
@@ -679,11 +699,12 @@
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
             this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
-            this.合计});
+            this.pickup});
             this.Margins = new System.Drawing.Printing.Margins(0, 5, 23, 0);
             this.PageHeight = 462;
             this.PageWidth = 300;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            this.ScriptsSource = "\r\n";
             this.ShowPrintMarginsWarning = false;
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
@@ -737,11 +758,12 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel27;
         private DevExpress.XtraReports.UI.XRLabel xrLabel29;
         private DevExpress.XtraReports.UI.XRLabel xrLabel28;
-        private DevExpress.XtraReports.UI.FormattingRule 合计;
+        private DevExpress.XtraReports.UI.FormattingRule pickup;
         private DevExpress.XtraReports.UI.XRLabel xrLabel21;
         private DevExpress.CodeRush.Extensions.SmartPasteExtension smartPasteExtension1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel11;
     }
 }

@@ -243,7 +243,7 @@ namespace OMP
                     {
                         label_msg.Content = "状态修改成功";
 
-                       // OrderUtil.getPayOrder(showOrdersInTabStatus);
+                        OrderUtil.getPayOrder(showOrdersInTabStatus);
                     });
             }
         }
@@ -259,14 +259,12 @@ namespace OMP
                     allSelectedOrder.Add(dataGrid_orderStateTab.SelectedItem as Order);
                 }
             }
-
             foreach (Order item in allSelectedOrder)
             {
-                OrderUtil.sendOrderMsgText(currentOrder, () =>
+                OrderUtil.sendOrderMsgText(item, () =>
                     {
                         label_msg.Content = "短信发送成功";
-
-                        OrderUtil.getPayOrder(showOrdersInTabStatus);
+                        OrderUtil.getTextFailedOrder(showOrdersInTabStatus);
                     });
             }
         }
@@ -322,8 +320,8 @@ namespace OMP
                 goods = order.goods,
                 phone = order.phone,
                 addr = order.addr,
-                delivery_way = order.delivery_way,
-                shop = order.shop + (order.delivery_way.Equals("pickup") ? "自提" : string.Empty),
+                delivery_way = order.delivery_way.Equals("pickup") ? "自提" : string.Empty,
+                shop = order.shop,
                 time = order.time,
                 freight = order.freight,
                 totalpreprice = order.totalpreprice,
@@ -517,6 +515,11 @@ namespace OMP
                     item.IsSelect = false;
                 }
             }
+        }
+
+        private void btn_getTextFiledOrderStateTab_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getTextFailedOrder(showOrdersInTabStatus);
         }
     }
 }
