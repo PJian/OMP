@@ -31,13 +31,13 @@ namespace OMP
         public MainWindow()
         {
             InitializeComponent();
-            if (ORM == null)
-            {
-                ORM = createSoft();
-            }
-            RegisterTableMsg.registSoft = ORM;
+            //if (ORM == null)
+            //{
+            //    ORM = createSoft();
+            //}
+           // RegisterTableMsg.registSoft = ORM;
 
-            CodeUtil.iniSoft();
+          //  CodeUtil.iniSoft();
         }
         private Soft ORM { get; set; }
         private DispatcherTimer regTimer = null;
@@ -57,8 +57,7 @@ namespace OMP
         /// </summary>
         private void expired()
         {
-            var regNumWin = new WinForReg();
-            regNumWin.RegSoft = ORM;
+            var regNumWin = new WinForReg() { RegSoft = ORM };
             regNumWin.ShowDialog();
         }
         /// <summary>
@@ -66,12 +65,9 @@ namespace OMP
         /// </summary>
         private void inTrial(int r)
         {
-            regTimer = new DispatcherTimer();
-
-            regTimer.Interval = TimeSpan.FromMinutes(5);
+            regTimer = new DispatcherTimer() { Interval = TimeSpan.FromMinutes(5), IsEnabled = true };
             //  regTimer.Interval = TimeSpan.FromSeconds(5);
             regTimer.Tick += timer_Tick;
-            regTimer.IsEnabled = true;
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -123,7 +119,7 @@ namespace OMP
             pageOptions = new PageOptions()
             {
                 PageNum = 1,
-                TopMargin = 25,
+                TopMargin = 1,
                 Printer = PrintResourceUtil.getDefaultPrinter(),
                 PrintType = PrintType.ORDER
             };
@@ -152,7 +148,7 @@ namespace OMP
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            checkRegist();
+           // checkRegist();
             init();
         }
 
