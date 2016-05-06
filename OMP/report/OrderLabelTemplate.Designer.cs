@@ -41,6 +41,7 @@
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
             this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
@@ -64,6 +65,7 @@
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel24 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel25 = new DevExpress.XtraReports.UI.XRLabel();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.xrLabel29 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel28 = new DevExpress.XtraReports.UI.XRLabel();
@@ -72,10 +74,8 @@
             this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
             this.pickup = new DevExpress.XtraReports.UI.FormattingRule();
             this.smartPasteExtension1 = new DevExpress.CodeRush.Extensions.SmartPasteExtension(this.components);
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
-            this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
-            ((System.ComponentModel.ISupportInitialize)(this.smartPasteExtension1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.smartPasteExtension1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -220,6 +220,23 @@
             this.reportHeaderBand1.StylePriority.UseForeColor = false;
             this.reportHeaderBand1.StylePriority.UseTextAlignment = false;
             this.reportHeaderBand1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // xrBarCode1
+            // 
+            this.xrBarCode1.AutoModule = true;
+            this.xrBarCode1.BorderWidth = 0F;
+            this.xrBarCode1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ocode")});
+            this.xrBarCode1.Font = new System.Drawing.Font("Times New Roman", 6F);
+            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(9.999998F, 0F);
+            this.xrBarCode1.Module = 1F;
+            this.xrBarCode1.Name = "xrBarCode1";
+            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100F);
+            this.xrBarCode1.SizeF = new System.Drawing.SizeF(123.9583F, 25.70834F);
+            this.xrBarCode1.StylePriority.UseBorderWidth = false;
+            this.xrBarCode1.StylePriority.UseFont = false;
+            code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC;
+            this.xrBarCode1.Symbology = code128Generator1;
             // 
             // xrLabel11
             // 
@@ -559,6 +576,11 @@
             this.xrLabel25.StylePriority.UseTextAlignment = false;
             this.xrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(EntityManagementService.entity.Order);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -649,26 +671,6 @@
             this.smartPasteExtension1.ExtensionName = "";
             this.smartPasteExtension1.Register = true;
             // 
-            // objectDataSource1
-            // 
-            this.objectDataSource1.DataSource = typeof(EntityManagementService.entity.Order);
-            this.objectDataSource1.Name = "objectDataSource1";
-            // 
-            // xrBarCode1
-            // 
-            this.xrBarCode1.BorderWidth = 0F;
-            this.xrBarCode1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ocode")});
-            this.xrBarCode1.Font = new System.Drawing.Font("Times New Roman", 6F);
-            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(9.999998F, 0F);
-            this.xrBarCode1.Name = "xrBarCode1";
-            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100F);
-            this.xrBarCode1.SizeF = new System.Drawing.SizeF(275F, 25.70834F);
-            this.xrBarCode1.StylePriority.UseBorderWidth = false;
-            this.xrBarCode1.StylePriority.UseFont = false;
-            code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetC;
-            this.xrBarCode1.Symbology = code128Generator1;
-            // 
             // OrderLabelTemplate
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -696,8 +698,8 @@
             this.PageInfo,
             this.DataField});
             this.Version = "15.2";
-            ((System.ComponentModel.ISupportInitialize)(this.smartPasteExtension1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.smartPasteExtension1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
