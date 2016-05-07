@@ -8,7 +8,7 @@ namespace OMP.report
         public OrderTemplate(PageOptions options)
         {
             InitializeComponent();
-            TopMargin.HeightF += options.TopMargin+24;
+            TopMargin.HeightF += options.TopMargin;
         }
     }
 }
