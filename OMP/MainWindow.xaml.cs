@@ -31,13 +31,13 @@ namespace OMP
         public MainWindow()
         {
             InitializeComponent();
-            //if (ORM == null)
-            //{
-            //    ORM = createSoft();
-            //}
-           // RegisterTableMsg.registSoft = ORM;
+            if (ORM == null)
+            {
+                ORM = createSoft();
+            }
+            RegisterTableMsg.registSoft = ORM;
 
-          //  CodeUtil.iniSoft();
+            CodeUtil.iniSoft();
         }
         private Soft ORM { get; set; }
         private DispatcherTimer regTimer = null;
@@ -48,7 +48,7 @@ namespace OMP
         }
         private Soft createSoft()
         {
-            ORM = new Soft() { SoftName = "OoderManagePrintPJ", SoftVersion = "Beta1.0", TryDays = 30, KeySalt = 10 };
+            ORM = new Soft() { SoftName = "OoderManagePrintPJV1", SoftVersion = "Beta1.0", TryDays = 30, KeySalt = 10 };
             return ORM;
         }
 
@@ -148,7 +148,7 @@ namespace OMP
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-           // checkRegist();
+            checkRegist();
             init();
         }
 
@@ -516,6 +516,31 @@ namespace OMP
         private void btn_getTextFiledOrderStateTab_Click(object sender, RoutedEventArgs e)
         {
             OrderUtil.getTextFailedOrder(showOrdersInTabStatus);
+        }
+
+        private void btn_getAMOrder_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getAMOrder(showOrdersInTabPrint);
+        }
+
+        private void btn_getPMOrder_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getPMOrder(showOrdersInTabPrint);
+        }
+
+        private void btn_getCanceledOrder_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getCanceledOrder(showOrdersInTabPrint);
+        }
+
+        private void btn_getPricedAMStateTab_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getAMOrder(showOrdersInTabStatus);
+        }
+
+        private void btn_getPricedPMStateTab_Click(object sender, RoutedEventArgs e)
+        {
+            OrderUtil.getPMOrder(showOrdersInTabStatus);
         }
     }
 }

@@ -45,6 +45,8 @@ namespace EntityManagementService.entity
         public string totalpreprice { get; set; }
         public double freight { get; set; }
         public string delivery_way { get; set; }
+        public string deliverydate { get; set; }
+        public string deliverytime { get; set; }
         public string time { get; set; }
 
         public List<Good> goods { get; set; }

@@ -72,8 +72,13 @@
                                     <Label Content="{Binding ocode}"></Label>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
-                                    <Label Content="时间："></Label>
-                                    <Label Content="{Binding time}"></Label>
+                                    <!--
+                                        <Label Content="时间："></Label>
+                                        <Label Content="{Binding time}"></Label>
+                                    -->
+                                    <Label Content="配送时间："></Label>
+                                    <Label Content="{Binding deliverydate}"></Label>
+                                    <Label Content="{Binding deliverytime}"></Label>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
                                     <Label Content="姓名："></Label>
@@ -120,8 +125,13 @@
                     </DataGrid>
 
                     <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4">
+                        <!--
                         <Button Content="获取已付款订单" x:Name="btn_getPricedOrder" Height="30" Margin="0,0,20,0" Click="btn_getPricedOrder_Click"></Button>
-                     
+                        -->
+                        <Button Content="获取上午订单" x:Name="btn_getAMOrder" Height="30" Margin="0,0,20,0" Click="btn_getAMOrder_Click"></Button>
+                        <Button Content="获取下午订单" x:Name="btn_getPMOrder" Height="30" Margin="0,0,20,0" Click="btn_getPMOrder_Click"></Button>
+                        <Button Content="获取已取消订单" x:Name="btn_getCanceledOrder" Height="30" Margin="0,0,20,0" Click="btn_getCanceledOrder_Click"></Button>
+
                     </StackPanel>
                 </Grid>
 
@@ -180,9 +190,13 @@
                     </DataGrid>
 
                     <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3" Grid.Row="4">
+                        <!--
                         <Button Content="获取已付款订单" x:Name="btn_getPricedOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedOrderStateTab_Click"></Button>
+                        -->
+                        
+                        <Button Content="获取上午订单" x:Name="btn_getPricedAMStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedAMStateTab_Click"></Button>
+                        <Button Content="获取下午订单" x:Name="btn_getPricedPMStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedPMStateTab_Click"></Button>
                         <Button Content="获取未发送短信订单" x:Name="btn_getTextFiledOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getTextFiledOrderStateTab_Click"></Button>
-
                         <Label x:Name="label_msg" HorizontalAlignment="Right"></Label>
                     </StackPanel>
                 </Grid>

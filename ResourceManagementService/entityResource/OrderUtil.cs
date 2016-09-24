@@ -40,7 +40,23 @@ namespace ResourceManagementService.entityResource
         /// </summary>
         private static string API_6 = "admin/api/index.php/order/getSMSfailedLists?uid=2988&ucode=88616770341";
 
+        /// <summary>
+        /// 获取上午订单
+        /// </summary>
+        private static string API_7 = "admin/api/index.php/order/getOrderLists?uid=2988&ucode=88616770341&times=am";
+        /// <summary>
+        /// 获取下午订单
+        /// </summary>
+        private static string API_8 = "admin/api/index.php/order/getOrderLists?uid=2988&ucode=88616770341&times=pm";
+        /// <summary>
+        /// 获取已取消订单
+        /// </summary>
+        private static string API_9 = "admin/api/index.php/order/getcanceledorders?uid=2988&ucode=88616770341";
+
+
         private static string BASE_ADDRESS = "http://www.wuyoutao.net/";
+
+        private static string BASE_ADDRESS_1 = "http://www.ejiashenghuo.com/";
 
         /// <summary>
         /// 获取短信发送失败的订单
@@ -72,7 +88,13 @@ namespace ResourceManagementService.entityResource
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(BASE_ADDRESS);
+                if (api.Equals(API_7) || api.Equals(API_8) || api.Equals(API_9))
+                {
+                    client.BaseAddress = new Uri(BASE_ADDRESS_1);
+                }
+                else {
+                    client.BaseAddress = new Uri(BASE_ADDRESS);
+                }
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = await client.GetAsync(api);
@@ -172,6 +194,30 @@ namespace ResourceManagementService.entityResource
             }
         }
 
+        /// <summary>
+        /// 获取上午订单
+        /// </summary>
+        /// <param name="callBack"></param>
+        public static void getAMOrder(Action<List<Order>> callBack)
+        {
+            getOrder(API_7, callBack);
+        }
+        /// <summary>
+        /// 获取下午订单
+        /// </summary>
+        /// <param name="callBack"></param>
+        public static void getPMOrder(Action<List<Order>> callBack)
+        {
+            getOrder(API_8, callBack);
+        }
+        /// <summary>
+        /// 获取已取消订单
+        /// </summary>
+        /// <param name="callBack"></param>
+        public static void getCanceledOrder(Action<List<Order>> callBack)
+        {
+            getOrder(API_9, callBack);
+        }
     }
 
     
