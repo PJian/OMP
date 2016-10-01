@@ -54,7 +54,7 @@ namespace ResourceManagementService.entityResource
         private static string API_9 = "admin/api/index.php/order/getcanceledorders?uid=2988&ucode=88616770341";
 
 
-        private static string BASE_ADDRESS = "http://www.wuyoutao.net/";
+        private static string BASE_ADDRESS = "http://www.ejiashenghuo.com/";
 
         private static string BASE_ADDRESS_1 = "http://www.ejiashenghuo.com/";
 
