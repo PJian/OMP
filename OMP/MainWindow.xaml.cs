@@ -42,6 +42,8 @@ namespace OMP
         private Soft ORM { get; set; }
         private DispatcherTimer regTimer = null;
         private WinRegist regWin { get; set; }
+        private String am = "";
+
         private void checkRegist()
         {
             CodeUtil.checkRegisterSuc(showRegWin, expired, inTrial, regErr);
@@ -238,8 +240,14 @@ namespace OMP
                 OrderUtil.changeOrderStatus(item, () =>
                     {
                         label_msg.Content = "状态修改成功";
-
-                        OrderUtil.getPayOrder(showOrdersInTabStatus);
+                        if (am.Equals("am"))
+                        {
+                            OrderUtil.getAMOrder(showOrdersInTabStatus);
+                        }
+                        else {
+                            OrderUtil.getPMOrder(showOrdersInTabStatus);
+                        }
+                        
                     });
             }
         }
@@ -535,11 +543,13 @@ namespace OMP
 
         private void btn_getPricedAMStateTab_Click(object sender, RoutedEventArgs e)
         {
+            am = "am";
             OrderUtil.getAMOrder(showOrdersInTabStatus);
         }
 
         private void btn_getPricedPMStateTab_Click(object sender, RoutedEventArgs e)
         {
+            am = "pm";
             OrderUtil.getPMOrder(showOrdersInTabStatus);
         }
     }
