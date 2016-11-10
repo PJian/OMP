@@ -189,7 +189,6 @@ namespace ResourceManagementService.entityResource
                     {
                         callBack();//程序返回是调用回掉函数
                     }
-
                 }
             }
         }

@@ -1,7 +1,7 @@
-﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"    x:Class="OMP.MainWindow"
+﻿<Window xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  x:Class="OMP.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="订单管理" Height="600" Width="800"  Loaded="Window_Loaded_1"   WindowStartupLocation="CenterScreen"   Closed="Window_Closed_1" Icon="images/order.ico">
+        Title="订单管理" Height="600" Width="860"  Loaded="Window_Loaded_1"   WindowStartupLocation="CenterScreen"   Closed="Window_Closed_1" Icon="images/logo.ico">
     <Grid>
         <TabControl x:Name="tabCtrl" SelectionChanged="tabCtrl_SelectionChanged">
             <TabItem Header="打印订单" Loaded="TabItem_Loaded">
@@ -17,14 +17,14 @@
                         <ColumnDefinition Width="300*"></ColumnDefinition>
                         <ColumnDefinition Width="500*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <CheckBox x:Name="checkbox_All" VerticalAlignment="Center" Checked="checkbox_All_Checked" Unchecked="checkbox_All_Unchecked">全选</CheckBox>
-                   
+                    <CheckBox x:Name="checkbox_All" VerticalAlignment="Center" Checked="checkbox_All_Checked" Unchecked="checkbox_All_Unchecked" Margin="0,1,0.2,12.2">全选</CheckBox>
+
                     <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80*"></RowDefinition>
                             <RowDefinition Height="210*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <GroupBox Header="打印设置">
+                        <GroupBox Header="打印设置" Margin="0,0,0.2,171.4" Grid.RowSpan="2">
                             <Grid x:Name="grid_print">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"></RowDefinition>
@@ -34,27 +34,31 @@
                                     <Button x:Name="btn_printOrderPreview" Content="订单预览" Margin="0,0,20,0" Click="btn_printOrderPreview_Click" ></Button>
                                     <Button x:Name="btn_printLabelPreview" Content="标签预览" Margin="0,0,20,0" Click="btn_printLabelPreview_Click" ></Button>
                                     <!--<CheckBox x:Name="checkbox_printPreview" Margin="0,0,20,0" VerticalAlignment="Center">显示打印预览</CheckBox>-->
+
                                     <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
                                         <Label Content="上页边距:" VerticalAlignment="Center"></Label>
-                                        <telerik:RadNumericUpDown Value="{Binding TopMargin}" IsInteger="True" Maximum="1000" Minimum="0" VerticalAlignment="Center"/>
+                                        <dxe:SpinEdit Value="{Binding TopMargin}" IsFloatValue="False" MinValue="0" MaxValue="1000" IsTextEditable="False" Width="55" />
+                                        <!--<telerik:RadNumericUpDown IsInteger="True" Maximum="1000" Minimum="0" VerticalAlignment="Center"/>-->
                                     </StackPanel>
                                     <Button Content="打印订单" Height="20" Margin="0,0,20,0" x:Name="btn_printOrder" Click="btn_printOrder_Click" ></Button>
-                                    <Button x:Name="btn_printLabel" Content="打印标签" Height="20" Margin="0,0,20,0" Click="btn_printLabel_Click"></Button>
+                                    <Button x:Name="btn_printLabel" Content="打印标签" Height="20" Margin="0,0,20,0" Click="btn_printLabel_Click"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
                                     <Label Content="打印机：" VerticalAlignment="Center"></Label>
                                     <ComboBox x:Name="combobox_print" VerticalAlignment="Center"  Margin="0,0,20,0" SelectionChanged="combobox_print_SelectionChanged"></ComboBox>
                                     <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
                                         <Label Content="打印数量:" VerticalAlignment="Center"></Label>
-                                        <telerik:RadNumericUpDown x:Name="printNum" Value="{Binding PageNum}" IsInteger="True" Maximum="100" Minimum="0" VerticalAlignment="Center"/>
+                                        <dxe:SpinEdit x:Name="printNum" Value="{Binding PageNum}" IsFloatValue="False" MinValue="0" MaxValue="1000" IsTextEditable="False" />
+                                        <!--<telerik:RadNumericUpDown x:Name="printNum" Value="{Binding PageNum}" IsInteger="True" Maximum="100" Minimum="0" VerticalAlignment="Center"/>-->
                                     </StackPanel>
+
                                 </StackPanel>
 
                             </Grid>
-                            
+
                         </GroupBox>
-                        
-                        <GroupBox Grid.Column="1" Grid.Row="1" Header="订单信息">
+
+                        <GroupBox Grid.Row="1" Header="订单信息" Margin="0,12.6,0.2,0.4">
                             <Grid x:Name="grid_orderDetailInfo">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -103,8 +107,8 @@
                             </Grid>
                         </GroupBox>
                     </Grid>
-                    
-                    
+
+
 
                     <DataGrid x:Name="dataGrid_order" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" SelectionChanged="dataGrid_order_SelectionChanged" CanUserAddRows="False">
                         <DataGrid.Columns>
@@ -150,9 +154,9 @@
                         <ColumnDefinition Width="68*"/>
                         <ColumnDefinition Width="123*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <CheckBox x:Name="checkbox_AllStateTab" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,10" Checked="checkbox_AllStateTab_Checked" Unchecked="checkbox_AllStateTab_Unchecked">全选</CheckBox>
+                    <CheckBox x:Name="checkbox_AllStateTab" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,10.2" Checked="checkbox_AllStateTab_Checked" Unchecked="checkbox_AllStateTab_Unchecked" Height="25">全选</CheckBox>
 
-                    <GroupBox Grid.Column="2" Grid.Row="1" Header="">
+                    <GroupBox Grid.Column="2" Grid.Row="1" Header="修改订单状态">
                         <Grid x:Name="grid_orderStateChange">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -193,7 +197,7 @@
                         <!--
                         <Button Content="获取已付款订单" x:Name="btn_getPricedOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedOrderStateTab_Click"></Button>
                         -->
-                        
+
                         <Button Content="获取上午订单" x:Name="btn_getPricedAMStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedAMStateTab_Click"></Button>
                         <Button Content="获取下午订单" x:Name="btn_getPricedPMStateTab" Height="30" Margin="0,0,20,0" Click="btn_getPricedPMStateTab_Click"></Button>
                         <Button Content="获取未发送短信订单" x:Name="btn_getTextFiledOrderStateTab" Height="30" Margin="0,0,20,0" Click="btn_getTextFiledOrderStateTab_Click"></Button>
